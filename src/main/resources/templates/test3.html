@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>layer 独立版 快速上手 之 弹出图片框</title>
+    <script src="../static/js/jQuery3-6.js"  th:src="@{/js/jQuery3-6.js}"></script>
+    <script src="../static/layer/layer.js"  th:src="@{/layer/layer.js}"></script>
+</head>
+<body>
+<!--定义一个a标签，调用函数-->
+<a  id="weixin" href="#" onclick="weixin()" >点击打开弹窗</a>
+<a href="#" onclick="weixin()" data='{$vol.jpgPath}'>点击打开弹窗</a>
+<!--定义一个需要打开的图片 img标签-->
+<div id="tong" style="display: none;">
+<!--    <img  th:src="@{/img/a.png}"  style="width: 200px;height: auto">
+    <img src="../static/img/a.png" height="1080" width="1920"/>-->
+    <img  src="https://i.loli.net/2019/06/01/5cf29027ea78726804.png"  style="width: 200px;height: auto">
+</div>
+</body>
+<script>
+    var filepath="../static/img/a.png";
+    /*$.post('/testjpg', {}, function(str){
+        filepath=str
+    });*/
+    function weixin() {
+
+        //var filepath=$(this).attr('data')
+        //var img="<img src='./"+filepath+"'/>"
+        var img="<img th:src='@{"+filepath+"}'  src='"+filepath+"'/>"
+        console.log(filepath,img)
+        layer.open({
+            type: 1,
+            title: false,
+            closeBtn: 0,
+            area: '800px',
+            skin: 'layui-layer-nobg', //没有背景色
+            shadeClose: true,
+            //content: $('#tong')
+            content: img
+        });
+    }
+</script>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>开始使用layer</title>
+    <script src="../static/js/jQuery3-6.js"  th:src="@{/js/jQuery3-6.js}"></script>
+    <script src="../static/layer/layer.js"  th:src="@{/layer/layer.js}"></script>
+</head>
+<body>
+
+
+<script>
+    function f() {
+        $.post('/test3', {}, function(str){
+            console.log(str)
+            layer.open({
+                type: 1,
+                content: str //注意，如果str是object，那么需要字符拼接。
+            });
+        });
+    }
+/*    layer.open({
+        type: 1 //Page层类型
+        ,area: ['500px', '300px']
+        ,title: 'Hello layer'
+        ,shade: 0.6 //遮罩透明度
+        ,maxmin: true //允许全屏最小化
+        ,anim: 1 //0-6的动画形式，-1不开启
+        ,content: '<div style="padding:50px;">这是一个非常普通的页面层，传入了自定义的 html</div>'
+    });*/
+    ;function a(){
+        //关于
+        $('#about').on('click', function(){
+            layer.alert('layui 出品');
+        });
+
+    };
+</script>
+<div>
+    <a href="javascript:;" onclick="f()" id="about">关于</a>
+</div>
+当你对此建立了一定的初始，你应该去详看API手册了。
+
+</body>
+</html>
