@@ -2,8 +2,11 @@ package com.example.testdemo.mapper;
 
 import com.example.testdemo.entity.Permission;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 
- /**
+import java.util.List;
+
+/**
   *${description}
   * @author     ：ShiYI
   * @date       ：Created in 2021/9/27
@@ -51,4 +54,10 @@ public interface PermissionMapper {
      * @return update count
      */
     int updateByPrimaryKey(Permission record);
+
+    @Select("SELECT code FROM t_permission WHERE id IN(\n" +
+            "SELECT permission_id FROM t_role_permission WHERE role_id IN(\n" +
+            "SELECT role_id FROM t_user_role WHERE user_id = #{id} \n" + ")\n" + ")")
+    List<String> getAll(String id);
+
 }

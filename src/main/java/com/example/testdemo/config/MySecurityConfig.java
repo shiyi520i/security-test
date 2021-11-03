@@ -75,23 +75,16 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .csrf().disable();
 
-        /*http.authorizeRequests().antMatchers("/static/**"
-                        ,"/swagger-resources/**"
-                        ,"/v2/**"
-                        ,"/swagger-ui/**"
-                        ,"/v3/**"
-                        ).permitAll()
-                //其他请求必需验证通过
-                .anyRequest().authenticated();*/
 
         http.authorizeRequests().antMatchers("/static/**"
                         ,"/swagger-resources/**"
-                        ,"/v2/**"
+
                         ,"/swagger-ui/**"
-                        ,"/v3/**"
-                ).permitAll()
+
+                ).permitAll()  //,"/v3/**",,"/v2/**"
                 //访问/test3需要有p1权限
                 .antMatchers("/test3").hasAuthority("p1")
+                .antMatchers("/a").authenticated()
                 //其他请求必需验证通过
                 .anyRequest().permitAll()
                 .and()

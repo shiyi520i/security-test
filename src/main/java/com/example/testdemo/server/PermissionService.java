@@ -4,7 +4,10 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import com.example.testdemo.entity.Permission;
 import com.example.testdemo.mapper.PermissionMapper;
- /**
+
+import java.util.List;
+
+/**
   *${description}
   * @author     ：ShiYI
   * @date       ：Created in 2021/9/27
@@ -44,5 +47,7 @@ public class PermissionService{
     public int updateByPrimaryKey(Permission record) {
         return permissionMapper.updateByPrimaryKey(record);
     }
+
+    public List<String> getAll(String id){return permissionMapper.getAll(id);}
 
 }

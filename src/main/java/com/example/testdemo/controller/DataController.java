@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class DataController {
     @Autowired
     private com.example.testdemo.server.UserService UserService;
+
     @RequestMapping("/test")
     public User getD(){
         //return tUserService.selectByPrimaryKey(Long.valueOf(1));
